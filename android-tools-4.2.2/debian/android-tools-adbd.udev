@@ -1,0 +1,1 @@
+ACTION=="add", KERNEL=="android_adb", GROUP="phablet", MODE="0660"

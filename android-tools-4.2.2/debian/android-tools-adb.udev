@@ -1,0 +1,63 @@
+# Udev rules for letting the console user access adb.
+# Vendor ids
+# Important product ids
+# d001 adb recovery
+# d002 adb system
+
+# Applies to 18d1
+# 2d00 accessory
+# 2d01 accessory,adb
+# 2d02 audio_source (part of libgphoto2-2)
+# 2d03 audio_source,adb
+# 2d04 accessory,audio_source
+# 2d05 accessory,audio_source,adb
+# 4ee1 mtp (part of libmtp-common)
+# 4ee2 mtp,adb (part of libmtp-common)
+# 4ee3 rndis
+# 4ee4 adb,rdnis
+# 4ee5 ptp
+# 4ee6 ptp,adb
+# 4e41 mtp
+# 4e42 mtp,adb
+# 4e43 ptp
+# 4e44 ptp,adb
+# 4e23 rndis
+# 4e24 rndis,adb
+
+ACTION=="add|change", SUBSYSTEM=="usb", \
+  ATTRS{idVendor}=="18d1", \
+  ATTRS{idProduct}=="2d01|2d03|2d05|4ee2|4ee4|4ee6|4e42|4e44|4e24|d001|d002", \
+  TAG+="uaccess"
+
+# Applies to 04e8
+# 685b mass_storage
+# 685e mass_storage,adb
+# 685c mtp (libgphoto2-2 libmtp-common)
+# 6860 mtp,adb (part of libgphoto2-2 libmtp-common)
+# 6862 rndis,dm
+# 6863 rndis
+# 6864 rndis,adb & rndis,acm,dm
+# 6865 ptp
+# 6866 ptp,adb
+# 6864 rndis,dm
+# 6865 ptp
+# 6866 ptp,adb
+
+ACTION=="add|change", SUBSYSTEM=="usb", \
+  ATTRS{idVendor}=="04e8", \
+  ATTRS{idProduct}=="685e|6860|6864|6866|6866", \
+  TAG+="uaccess"
+
+# Applies to 2a45 (Meizu)
+
+ACTION=="add|change", SUBSYSTEM=="usb", \
+  ATTRS{idVendor}=="2a45", \
+  ATTRS{idProduct}=="0c01|0c02|2008", \
+  TAG+="uaccess"
+
+# Applies to 2a47 (BQ)
+
+ACTION=="add|change", SUBSYSTEM=="usb", \
+  ATTRS{idVendor}=="2a47", \
+  ATTRS{idProduct}=="0c01|0c02|2008", \
+  TAG+="uaccess"

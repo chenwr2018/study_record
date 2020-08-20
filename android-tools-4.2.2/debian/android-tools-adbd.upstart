@@ -1,0 +1,34 @@
+# adbd - run adb debugging shell
+#
+# This task enables the adb shell
+
+description     "adbd"
+
+start on (android-container persist.sys.usb.config=*adb) and (started lightdm)
+stop on runlevel [06]
+
+normal exit 0 127
+
+respawn
+
+pre-start script
+        if [ -d /sys/class/android_usb ]
+        then
+
+        if [ -d /sys/class/android_usb/android0/f_ffs ] && \
+                [ -n "$(cat /sys/class/android_usb/android0/f_ffs/aliases)" ]
+        then
+                if ! $(mount|grep -q ^adb)
+                then
+                        # some devices use the functionfs (i.e. manta)
+                        # we need to mount it to keep adb working
+                        mkdir -p /dev/usb-ffs/adb
+                        mount -t functionfs adb /dev/usb-ffs/adb || true
+                fi
+        fi
+        else
+        grep -q qemu /proc/cmdline || { stop; exit 0; }
+        fi
+end script
+
+exec su - -c adbd

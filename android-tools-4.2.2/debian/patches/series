@@ -1,0 +1,7 @@
+remove-selinux-android.patch
+add_adbd.patch
+reboot-syscall.patch
+enable-emulator.patch
+ppc64el-ftbfs.patch
+add-bq-vendor-id.patch
+add-meizu-vendor-id.patch

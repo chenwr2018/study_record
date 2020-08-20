@@ -1,0 +1,43 @@
+Author: Steve Langasek <steve.langasek@ubuntu.com>
+Description: Fix build failure on ppc64el
+ On ppc64/ppc64el, the Linux kernel headers default to defining __u64 as
+ 'unsigned long int' for "compatibility".  However, this is incompatible
+ with android-tools' own definition of the type.  Use the
+ __SANE_USERSPACE_TYPES__ define to get kernel header behavior consistent
+ with other architectures.
+Index: android-tools-4.2.2+git20130218/extras/ext4_utils/ext4_utils.c
+===================================================================
+--- android-tools-4.2.2+git20130218.orig/extras/ext4_utils/ext4_utils.c	2014-02-22 00:36:30.665154000 +0000
++++ android-tools-4.2.2+git20130218/extras/ext4_utils/ext4_utils.c	2014-02-22 00:36:30.655154000 +0000
+@@ -36,6 +36,7 @@
+ #endif
+ 
+ #if defined(__linux__)
++#define __SANE_USERSPACE_TYPES__
+ #include <linux/fs.h>
+ #elif defined(__APPLE__) && defined(__MACH__)
+ #include <sys/disk.h>
+Index: android-tools-4.2.2+git20130218/extras/ext4_utils/make_ext4fs_main.c
+===================================================================
+--- android-tools-4.2.2+git20130218.orig/extras/ext4_utils/make_ext4fs_main.c	2014-02-14 18:26:17.000000000 +0000
++++ android-tools-4.2.2+git20130218/extras/ext4_utils/make_ext4fs_main.c	2014-02-22 00:37:41.735153984 +0000
+@@ -20,6 +20,7 @@
+ #include <unistd.h>
+ 
+ #if defined(__linux__)
++#define __SANE_USERSPACE_TYPES__
+ #include <linux/fs.h>
+ #elif defined(__APPLE__) && defined(__MACH__)
+ #include <sys/disk.h>
+Index: android-tools-4.2.2+git20130218/extras/ext4_utils/wipe.c
+===================================================================
+--- android-tools-4.2.2+git20130218.orig/extras/ext4_utils/wipe.c	2013-02-18 14:49:03.000000000 +0000
++++ android-tools-4.2.2+git20130218/extras/ext4_utils/wipe.c	2014-02-22 00:37:37.225155283 +0000
+@@ -19,6 +19,7 @@
+ 
+ #if defined(__linux__)
+ 
++#define __SANE_USERSPACE_TYPES__
+ #include <linux/fs.h>
+ #include <sys/ioctl.h>
+ 

@@ -1,0 +1,41 @@
+_fastboot()  
+{
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts="reboot boot flash devices -w reboot-bootloader"
+
+    case "$prev" in
+    reboot | devices | -w | reboot-bootloader)
+        COMPREPLY=()
+        return 0
+        ;;
+    flash)
+        COMPREPLY=( $(compgen -W "boot system recovery radio" -- $cur ))
+        return 0
+        ;;
+    boot)
+        COMPREPLY=( $(compgen -o filenames -G "${cur}*.img"))
+        return 0
+        ;;
+    *)
+        local prev2="${COMP_WORDS[COMP_CWORD-2]}"
+        local prev3="${COMP_WORDS[COMP_CWORD-3]}"
+        if [ "$prev2" == "flash" ];then
+            COMPREPLY=( $(compgen -o filenames -G "${cur}*.img"))
+            return 0
+        elif [ "$prev2" == "boot" ];then
+            COMPREPLY=()
+            return 0
+        elif [ "$prev3" == "flash" ];then
+            COMPREPLY=()
+            return 0
+        fi
+        ;;
+    esac
+
+    COMPREPLY=( $(compgen -W "$opts" -- $cur) )
+    return 0
+}
+complete -F _fastboot fastboot

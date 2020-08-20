@@ -1,0 +1,17 @@
+/home/workspace/test/buildroot/buildroot-2020.02.3/output/build/android-tools-4.2.2+git20130218/debian/patches/remove-selinux-android.patch
+/home/workspace/test/buildroot/buildroot-2020.02.3/output/build/android-tools-4.2.2+git20130218/debian/patches/add_adbd.patch
+/home/workspace/test/buildroot/buildroot-2020.02.3/output/build/android-tools-4.2.2+git20130218/debian/patches/reboot-syscall.patch
+/home/workspace/test/buildroot/buildroot-2020.02.3/output/build/android-tools-4.2.2+git20130218/debian/patches/enable-emulator.patch
+/home/workspace/test/buildroot/buildroot-2020.02.3/output/build/android-tools-4.2.2+git20130218/debian/patches/ppc64el-ftbfs.patch
+/home/workspace/test/buildroot/buildroot-2020.02.3/output/build/android-tools-4.2.2+git20130218/debian/patches/add-bq-vendor-id.patch
+/home/workspace/test/buildroot/buildroot-2020.02.3/output/build/android-tools-4.2.2+git20130218/debian/patches/add-meizu-vendor-id.patch
+/home/workspace/test/buildroot/buildroot-2020.02.3/package/android-tools/0001-Fix-makefiles-for-out-of-tree-build.patch
+/home/workspace/test/buildroot/buildroot-2020.02.3/package/android-tools/0002-Fix-adbd-for-non-Ubuntu-systems.patch
+/home/workspace/test/buildroot/buildroot-2020.02.3/package/android-tools/0003-Fix-build-issue-with-uclibc.patch
+/home/workspace/test/buildroot/buildroot-2020.02.3/package/android-tools/0004-Fix-build-issue-with-musl.patch
+/home/workspace/test/buildroot/buildroot-2020.02.3/package/android-tools/0005-Use-pkgconf-to-get-libs-deps.patch
+/home/workspace/test/buildroot/buildroot-2020.02.3/package/android-tools/0006-fix-big-endian-build.patch
+/home/workspace/test/buildroot/buildroot-2020.02.3/package/android-tools/0007-include-cdefs-h-when-needed.patch
+/home/workspace/test/buildroot/buildroot-2020.02.3/package/android-tools/0008-Include-sysmacros.h-to-compile-with-glibc-2.28.patch
+/home/workspace/test/buildroot/buildroot-2020.02.3/package/android-tools/0009-Fix-makefiles-for-out-of-tree-ext4_utils-build.patch
+/home/workspace/test/buildroot/buildroot-2020.02.3/package/android-tools/0010-adb-added-patch-for-openssl-1.1.0-compatibility.patch

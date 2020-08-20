@@ -1,0 +1,17 @@
+#!/bin/sh
+
+set -e
+
+# Old udev rules were marking all /dev entries as "uaccess" meaning
+# that the current active user could write to any entry.
+# A reboot is required to make sure all the permissions are set to
+# a sane value again.
+if dpkg --compare-versions "$2" lt 4.2.2+git20130218-3ubuntu15 && \
+    [ -x /usr/share/update-notifier/notify-reboot-required ]
+then
+    /usr/share/update-notifier/notify-reboot-required || :
+fi
+
+#DEBHELPER#
+
+exit 0
