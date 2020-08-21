@@ -42,7 +42,7 @@ CPPFLAGS+= -DHAVE_TERMIO_H
 CPPFLAGS+= -I./
 CPPFLAGS+= -I../include
 
-LIBS+= -lc -lpthread -lz `pkg-config --libs libcrypto`
+LIBS+= -lc -lpthread -lz -lcrypto
 
 OBJS= $(SRCS:.c=.o)
 

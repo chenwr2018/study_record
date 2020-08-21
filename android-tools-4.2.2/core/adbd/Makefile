@@ -45,7 +45,7 @@ CPPFLAGS+= -DADBD_NON_ANDROID
 CPPFLAGS+= -I./
 CPPFLAGS+= -I../include
 
-LIBS+= -lc -lpthread -lz `pkg-config --libs libcrypto` -lcrypt
+LIBS+= -lc -lpthread -lz -lcrypto -lcrypt
 
 OBJS= $(patsubst %, %.o, $(basename $(SRCS)))
 
