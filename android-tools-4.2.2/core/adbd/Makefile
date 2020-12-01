@@ -1,5 +1,6 @@
 # Makefile for adbd
-CC:=arm-oe-linux-gnueabi-gcc
+#CC:=arm-oe-linux-gnueabi-gcc
+CC:=arm-hisiv100nptl-linux-gcc
 
 VPATH+= ./
 SRCS+=  adb.c
@@ -44,6 +45,13 @@ CPPFLAGS+= -DHAVE_TERMIO_H
 CPPFLAGS+= -DADBD_NON_ANDROID
 CPPFLAGS+= -I./
 CPPFLAGS+= -I../include
+
+# 设置zlib openssl 头文件与库搜索路径
+CPPFLAGS+= -I/home/workspace/build/openssl/include
+CPPFLAGS+= -I/home/workspace/build/zlib/include
+
+LDFLAGS+= -L/home/workspace/build/zlib/lib
+LDFLAGS+= -L/home/workspace/build/openssl/lib
 
 LIBS+= -lc -lpthread -lz -lcrypto -lcrypt
 
