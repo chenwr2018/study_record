@@ -44,9 +44,7 @@ CPPFLAGS+= -I./
 CPPFLAGS+= -I../include
 # zlib openssl 头文件与库搜索路径
 CPPFLAGS+= -I/home/workspace/build/openssl/include
-CPPFLAGS+= -L/home/workspace/build/openssl/lib
 CPPFLAGS+= -I/home/workspace/build/zlib/include
-CPPFLAGS+= -L/home/workspace/build/zlib/lib
 
 LDFLAGS+= -L/home/workspace/build/zlib/lib
 LDFLAGS+= -L/home/workspace/build/openssl/lib
